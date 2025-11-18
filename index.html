@@ -29,10 +29,13 @@
       <h2>{{carVendor}} {{carModel}} {{carPrice}}</h2>
       
       <button v-on:click="getAllCars">Get Cars</button>
+      <button v-on:click="sortAscend">Sort By Ascend</button>
+      <button v-on:click="sortDescend">Sort By Descend</button>
+      <button v-on:click="filterPrice">Vis over 500000</button>
       
 
       <ul>
-        <li v-for="car in carList">{{car.vendor}} - {{car.model}}</li>
+        <li v-for="car in carList">{{car.price}} - {{car.vendor}} - {{car.model}}</li>
       </ul>
 
 

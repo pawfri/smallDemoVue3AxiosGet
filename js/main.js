@@ -4,6 +4,7 @@ const app = Vue.createApp({
     data() {
         return {
             intro: 'Welcome to my Vue template',
+            allCarList:[],
             carList:[],
             carId: "",
             carVendor: '',
@@ -14,6 +15,16 @@ const app = Vue.createApp({
     },
 
     methods: {
+        sortAscend(){
+            this.carList.sort((a,b) => a.price - b.price)
+        },
+        sortDescend(){
+            this.carList.sort((a,b) => b.price - a.price)
+        },
+        filterPrice(){
+            this.carList = this.allCarList.filter((car) => car.price > 500000)
+        },
+
         myMethod(){
 
         },
@@ -24,8 +35,9 @@ const app = Vue.createApp({
             .then(
                 response => {
                     console.log(response)
-                    this.carList = response.data
+                    this.allCarList = response.data
                     this.statuskode = response.status
+                    this.carList = this.allCarList
                 }
             )
             .catch(
